@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Nueva tarea</h2>
+<form method="POST">
+    <label>Título</label>
+    <input type="text" name="title" required>
+
+    <label>Descripción</label>
+    <textarea name="description" rows="3"></textarea>
+
+    <label>Fecha límite</label>
+    <input type="date" name="due_date">
+
+    <button type="submit">Guardar tarea</button>
+</form>
+{% endblock %}
