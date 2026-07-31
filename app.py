@@ -1,8 +1,20 @@
+from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
 from database import init_db, insert_task, get_all_tasks, get_task, update_task, delete_task
 
 app = Flask(__name__)
 init_db()
+
+
+@app.template_filter("fecha_bonita")
+def fecha_bonita(value):
+    """Convierte una fecha YYYY-MM-DD a formato DD/MM/AAAA para mostrarla al usuario."""
+    if not value:
+        return ""
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").strftime("%d/%m/%Y")
+    except ValueError:
+        return value
 
 
 @app.route("/")
