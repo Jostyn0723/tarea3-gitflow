@@ -14,7 +14,7 @@
     <tr>
         <td>{{ task['title'] }}</td>
         <td>{{ task['description'] }}</td>
-        <td>{{ task['due_date'] }}</td>
+        <td>{{ task['due_date']|fecha_bonita }}</td>
         <td class="status-{{ task['status'] }}">{{ task['status'] }}</td>
         <td class="actions">
             <a href="/edit/{{ task['id'] }}">Editar</a>
