@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from database import init_db, insert_task
+from database import init_db, insert_task, get_all_tasks
 
 app = Flask(__name__)
 init_db()
@@ -7,7 +7,8 @@ init_db()
 
 @app.route("/")
 def home():
-    return "Task Manager - modelo de datos listo"
+    tasks = get_all_tasks()
+    return render_template("index.html", tasks=tasks)
 
 
 @app.route("/create", methods=["GET", "POST"])
